@@ -59,5 +59,5 @@ features:
     button:
       enable: true
       label: "Learn More"
-      link: "https://your-hospital-system-link.com/admin-features"
+      link: "./admin"
 ---

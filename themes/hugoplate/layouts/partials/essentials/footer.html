@@ -1,4 +1,5 @@
 <footer class="bg-theme-light dark:bg-darkmode-theme-light">
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <div class="container">
     <div class="row items-center py-10">
       <div class="lg:col-3 mb-8 text-center lg:mb-0 lg:text-left">
@@ -54,4 +55,16 @@
       </p>
     </div>
   </div>
+
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", (user) => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
 </footer>
