@@ -38,8 +38,8 @@ preloader = "" # use jpg, png, svg or gif format.
 # Navigation button
 [navigation_button]
 enable = true
-label = "get a quote"
-link = "contact"
+label = "Login For Dashboard"
+link = "login"
 
 # search
 # search module: https://github.com/gethugothemes/hugo-modules/tree/master/search
@@ -57,7 +57,7 @@ show_categories = true
 [announcement]
 enable = true
 expire_days = 7
-content = "Amrita School of Nursing has been taken down due to lack of funds. We are looking for a new home for the school."
+content = "This is a test announcement"
 
 # seo meta data for OpenGraph / Twitter Card
 # seo module: https://github.com/gethugothemes/hugo-modules/tree/master/seo-tools/basic-seo

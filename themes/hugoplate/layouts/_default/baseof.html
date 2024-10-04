@@ -9,10 +9,13 @@
   <head>
     <!-- head (don't cache it) -->
     {{ partial "essentials/head.html" . }}
+    <!-- cookie consent -->
+    {{ partialCached "cookie-consent.html" . }}
 
 
     <!-- style (always cache it) -->
     {{ partialCached "essentials/style.html" . }}
+    <!-- cookie consent -->
 
   </head>
 
