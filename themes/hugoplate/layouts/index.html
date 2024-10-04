@@ -1,7 +1,42 @@
 {{ define "main" }}
+<style>
+  html, body {
+    height: 100%;
+    margin: 0;
+  }
+
+  .scroll-snap-container {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+  }
+
+  .scroll-snap-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scroll-snap-child {
+    scroll-snap-align: start;
+    min-height: 99vh;
+    overflow-y: auto;
+  }
+
+  .scroll-snap-child:last-of-type {
+    min-height: calc(100vh - 100px);
+  }
+
+  .scroll-snap-child:last{
+    scroll-snap-align: end;
+  }
+
+
+</style>
+
+<div class="scroll-snap-container">
   <!-- Banner -->
   {{ with .Params.banner }}
-    <section class="section pt-14">
+    <section class="section pt-14 scroll-snap-child">
       <div class="container">
         <div class="row justify-center">
           <div class="lg:col-7 md:col-9 mb-8 text-center">
@@ -25,8 +60,18 @@
               {{ end }}
             {{ end }}
           </div>
-          <div class="col-12">
-            {{ partial "image" (dict "Src" .image "Alt" "Banner image" "Loading" "eager" "Class" "mx-auto lg:!max-w-[800px]" "DisplayXL" "800x" ) }}
+          <div class="col-12 text-center">
+            {{ $image := resources.Get .image }}
+            {{ $image := $image.Resize "800x webp q80" }}
+            <img
+              src="{{ $image.RelPermalink }}"
+              alt="Banner Image"
+              class="mx-auto max-w-full h-auto"
+              style="max-width: 30%; height: auto; object-fit: cover;"
+              width="{{ $image.Width }}"
+              height="{{ $image.Height }}"
+              loading="lazy"
+            >
           </div>
         </div>
       </div>
@@ -36,7 +81,7 @@
 
   <!-- Features -->
   {{ range $i, $e:= .Params.features }}
-    <section class="section-sm {{ if (modBool $i 2) }}bg-gradient{{ end }}">
+    <section class="section-sm {{ if (modBool $i 2) }}bg-gradient{{ end }} scroll-snap-child">
       <div class="container">
         <div class="row items-center justify-between">
           <div
@@ -81,7 +126,7 @@
   <!-- Testimonials -->
   {{ with site.GetPage "sections/testimonial" }}
     {{ if .Params.enable }}
-      <section class="section">
+      <section class="section scroll-snap-child">
         <div class="container">
           <div class="row">
             <div class="md:col-10 lg:col-8 xl:col-6 mx-auto mb-12 text-center">
@@ -137,8 +182,10 @@
             </div>
           </div>
         </div>
+        <br>
       </section>
+      {{ end }}
+      {{partial "essentials/footer" .}}
     {{ end }}
-  {{ end }}
   <!-- /Testimonials -->
 {{ end }}
