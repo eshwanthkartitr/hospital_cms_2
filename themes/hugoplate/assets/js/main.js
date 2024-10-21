@@ -5,18 +5,17 @@
   // Dropdown Menu Toggler For Mobile
   // ----------------------------------------
   const dropdownMenuToggler = document.querySelectorAll(
-    ".nav-dropdown > .nav-link",
+    ".nav-dropdown > .nav-link"
   );
 
   dropdownMenuToggler.forEach((toggler) => {
     toggler?.addEventListener("click", (e) => {
-      e.target.closest('.nav-item').classList.toggle("active");
+      e.target.closest(".nav-item").classList.toggle("active");
     });
   });
 
-
   if (window.netlifyIdentity) {
-    window.netlifyIdentity.on("init", user => {
+    window.netlifyIdentity.on("init", (user) => {
       if (!user) {
         window.netlifyIdentity.on("login", () => {
           document.location.href = "/admin/";
@@ -24,7 +23,6 @@
       }
     });
   }
-
 
   // Testimonial Slider
   // ----------------------------------------
@@ -45,4 +43,7 @@
       },
     },
   });
+
+  // Redirect to Local Backend on Login Click
+  // ----------------------------------------
 })();

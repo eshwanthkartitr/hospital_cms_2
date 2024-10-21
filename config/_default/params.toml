@@ -39,7 +39,7 @@ preloader = "" # use jpg, png, svg or gif format.
 [navigation_button]
 enable = true
 label = "Login For Dashboard"
-link = "login"
+link = "http://127.0.0.1:5000"
 
 # search
 # search module: https://github.com/gethugothemes/hugo-modules/tree/master/search
