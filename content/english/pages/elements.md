@@ -8,6 +8,8 @@ description: "This is meta description"
 draft: false
 ---
 
+Below is the list of components that can be used in the website for writing content.
+
 {{< toc >}}
 
 Here is an example of headings. You can use this heading by the following markdown rules. For example: use `#` for heading 1 and use `######` for heading 6.
